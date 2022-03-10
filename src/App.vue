@@ -11,6 +11,8 @@
     <router-link to="/users/logout">Logout</router-link>
     |
     <router-link to="/equipment-sets">Equipment Sets</router-link>
+    |
+    <router-link to="/equipment-sets/new">Create Equipment Set</router-link>
   </div>
   <router-view />
 </template>

@@ -38,83 +38,85 @@ export default {
   <div v-for="set in sets" :key="set.id">
     <h2>{{ set.name }}</h2>
     <h3>{{ set.monster.name }}</h3>
-    <div>
-      <img class="image1 background" src="/images/head_slot.png" v-if="!set.slotted_items['head']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['head'])" />
+    <router-link v-bind:to="`/equipment-sets/${set.id}`">
+      <div>
+        <img class="image1 background" src="/images/head_slot.png" v-if="!set.slotted_items['head']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['head'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="image1 background" src="/images/weapon_slot.png" v-if="!set.slotted_items['2h']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['2h'])" />
+      <div>
+        <img class="image1 background" src="/images/weapon_slot.png" v-if="!set.slotted_items['2h']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['2h'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="image1 background" src="/images/cape_slot.png" v-if="!set.slotted_items['cape']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['cape'])" />
+      <div>
+        <img class="image1 background" src="/images/cape_slot.png" v-if="!set.slotted_items['cape']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['cape'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="image1 background" src="/images/neck_slot.png" v-if="!set.slotted_items['neck']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['neck'])" />
+      <div>
+        <img class="image1 background" src="/images/neck_slot.png" v-if="!set.slotted_items['neck']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['neck'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="image1 background" src="/images/ammo_slot.png" v-if="!set.slotted_items['ammo']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['ammo'])" />
+      <div>
+        <img class="image1 background" src="/images/ammo_slot.png" v-if="!set.slotted_items['ammo']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['ammo'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="image1 background" src="/images/body_slot.png" v-if="!set.slotted_items['body']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['body'])" />
+      <div>
+        <img class="image1 background" src="/images/body_slot.png" v-if="!set.slotted_items['body']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['body'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="background" src="/images/shield_slot.png" v-if="!set.slotted_items['shield']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['shield'])" />
+      <div>
+        <img class="background" src="/images/shield_slot.png" v-if="!set.slotted_items['shield']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['shield'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="image1 background" src="/images/legs_slot.png" v-if="!set.slotted_items['legs']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['legs'])" />
+      <div>
+        <img class="image1 background" src="/images/legs_slot.png" v-if="!set.slotted_items['legs']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['legs'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="image1 background" src="/images/hands_slot.png" v-if="!set.slotted_items['hands']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['hands'])" />
+      <div>
+        <img class="image1 background" src="/images/hands_slot.png" v-if="!set.slotted_items['hands']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['hands'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="image1 background" src="/images/feet_slot.png" v-if="!set.slotted_items['feet']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['feet'])" />
+      <div>
+        <img class="image1 background" src="/images/feet_slot.png" v-if="!set.slotted_items['feet']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['feet'])" />
+        </div>
       </div>
-    </div>
-    <div>
-      <img class="image1 background" src="/images/ring_slot.png" v-if="!set.slotted_items['ring']" />
-      <div v-else>
-        <img class="image1 background" src="/images/empty_slot.png" />
-        <img class="image2" :src="retrieveImage(set.slotted_items['ring'])" />
+      <div>
+        <img class="image1 background" src="/images/ring_slot.png" v-if="!set.slotted_items['ring']" />
+        <div v-else>
+          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image2" :src="retrieveImage(set.slotted_items['ring'])" />
+        </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 

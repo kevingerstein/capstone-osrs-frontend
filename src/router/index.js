@@ -4,6 +4,8 @@ import UsersNew from "../views/UsersNew.vue";
 import UsersLogin from "../views/UsersLogin.vue";
 import UsersLogout from "../views/UsersLogout.vue";
 import EquipmentSetsIndex from "../views/EquipmentSetsIndex.vue";
+import EquipmentSetsShow from "../views/EquipmentSetsShow.vue";
+import EquipmentSetsCreate from "../views/EquipmentSetsCreate.vue";
 
 const routes = [
   {
@@ -35,6 +37,16 @@ const routes = [
     path: "/equipment-sets",
     name: "equipment-sets",
     component: EquipmentSetsIndex,
+  },
+  {
+    path: "/equipment-sets/:id",
+    name: "equipment-sets-show",
+    component: EquipmentSetsShow,
+  },
+  {
+    path: "/equipment-sets/new",
+    name: "equipment-sets/new",
+    component: EquipmentSetsCreate,
   },
 ];
 
