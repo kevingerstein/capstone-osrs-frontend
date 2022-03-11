@@ -12,7 +12,8 @@ export default {
     axios.get("/equipment-sets").then((response) => {
       this.sets = response.data;
       this.sets.forEach((set) => {
-        console.log((set.monster = Monsters.get(2042)));
+        console.log(set.oldschooljs_monster_id);
+        console.log((set.monster = Monsters.get(set.oldschooljs_monster_id)));
         set.js_items = [];
         set.slotted_items = {};
         set.equipment_set_items.forEach((item) => {
@@ -26,7 +27,10 @@ export default {
     retrieveImage: function (item) {
       let image_url = item.wiki_url.replace(" ", "_");
       image_url = image_url.replace("/w/", "/images/");
-      image_url = image_url + ".png";
+      if (image_url.includes("#")) {
+        image_url = image_url.substring(0, image_url.indexOf("#"));
+      }
+      image_url = image_url + "_detail.png";
       console.log(image_url);
       return image_url;
     },
@@ -35,6 +39,7 @@ export default {
 </script>
 
 <template>
+  <!-- alt for images can be no _detail -->
   <div v-for="set in sets" :key="set.id">
     <h2>{{ set.name }}</h2>
     <h3>{{ set.monster.name }}</h3>
@@ -137,6 +142,8 @@ export default {
   position: relative;
   top: -7.5px;
   left: -32.5px;
+  width: 25px;
+  height: 25px;
 }
 img {
   width: 25px;
