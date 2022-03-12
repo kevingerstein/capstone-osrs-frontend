@@ -40,6 +40,7 @@ export default {
 
 <template>
   <!-- alt for images can be no _detail -->
+  <!-- IMAGE FOR WEAPONS NOT OWRKING CORRECTLY -->
   <div v-for="set in sets" :key="set.id">
     <h2>{{ set.name }}</h2>
     <h3>{{ set.monster.name }}</h3>
@@ -47,28 +48,33 @@ export default {
       <div>
         <img class="image1 background" src="/images/head_slot.png" v-if="!set.slotted_items['head']" />
         <div v-else>
-          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image1 background" src="/images/empty_slot_light.png" />
           <img class="image2" :src="retrieveImage(set.slotted_items['head'])" />
         </div>
       </div>
       <div>
-        <img class="image1 background" src="/images/weapon_slot.png" v-if="!set.slotted_items['2h']" />
+        <img
+          class="image1 background"
+          src="/images/weapon_slot.png"
+          v-if="!set.slotted_items['weapon'] && !set.slotted_items['2h']"
+        />
         <div v-else>
-          <img class="image1 background" src="/images/empty_slot.png" />
-          <img class="image2" :src="retrieveImage(set.slotted_items['2h'])" />
+          <img class="image1 background" src="/images/empty_slot_light.png" />
+          <img v-if="set.slotted_items['weapon']" class="image2" :src="retrieveImage(set.slotted_items['weapon'])" />
+          <img v-else class="image2" :src="retrieveImage(set.slotted_items['2h'])" />
         </div>
       </div>
       <div>
         <img class="image1 background" src="/images/cape_slot.png" v-if="!set.slotted_items['cape']" />
         <div v-else>
-          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image1 background" src="/images/empty_slot_light.png" />
           <img class="image2" :src="retrieveImage(set.slotted_items['cape'])" />
         </div>
       </div>
       <div>
         <img class="image1 background" src="/images/neck_slot.png" v-if="!set.slotted_items['neck']" />
         <div v-else>
-          <img class="image1 background" src="/images/empty_slot.png" />
+          <img class="image1 background" src="/images/empty_slot_light.png" />
           <img class="image2" :src="retrieveImage(set.slotted_items['neck'])" />
         </div>
       </div>
@@ -140,10 +146,10 @@ export default {
 
 .image2 {
   position: relative;
-  top: -7.5px;
-  left: -32.5px;
-  width: 25px;
-  height: 25px;
+  top: -6.5px;
+  left: -33px;
+  width: 27px;
+  height: 27px;
 }
 img {
   width: 25px;

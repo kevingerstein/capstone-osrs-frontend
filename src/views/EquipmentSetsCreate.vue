@@ -9,6 +9,8 @@ export default {
       set: {
         name: "",
         oldschooljs_monster_id: null,
+        monster: {},
+        monsterName: "",
         head: {},
         body: {},
         neck: {},
@@ -91,6 +93,30 @@ export default {
       image_url = image_url + "_detail.png";
       return image_url;
     },
+    retrieveAltImage: function (item) {
+      console.log("retrieving alt image for: " + item.name);
+      let image_url = item.wiki_url.replace(" ", "_");
+      image_url = image_url.replace("/w/", "/images/");
+      if (image_url.includes("#")) {
+        image_url = image_url.substring(0, image_url.indexOf("#"));
+      }
+      image_url = image_url + ".png";
+      return image_url;
+    },
+    retrieveMonsterImage: function (monster) {
+      console.log("retrieving alt image for: " + monster.name);
+      console.log(monster);
+      console.log(monster);
+      console.log(monster.data.wikiURL);
+      let image_url = monster.data.wikiURL.replace(" ", "_");
+      image_url = image_url.replace("/w/", "/images/");
+      if (image_url.includes("#")) {
+        image_url = image_url.substring(0, image_url.indexOf("#"));
+      }
+      console.log(image_url);
+      image_url = image_url + ".png";
+      return image_url;
+    },
     adjustStats: function (oldItem, newItem) {
       if (Object.keys(oldItem).length !== 0) {
         for (const stat in this.stats) {
@@ -130,11 +156,12 @@ export default {
         console.log(this.set);
       }
     },
+    //NEEDS WORK --- MONSTER PARSING IS MORE TRICKY
     getMonster: function (monster) {
       let element = document.getElementById(monster);
       if (element) {
         this.set.oldschooljs_monster_id = parseInt(element.getAttribute("data"));
-        console.log(Monsters.get(this.set.oldschooljs_monster_id));
+        console.log((this.set.monster = Monsters.get(this.set.oldschooljs_monster_id)));
         console.log(this.set.oldschooljs_monster_id);
       }
     },
@@ -176,7 +203,7 @@ export default {
     "set.slotted_items.ring"(ring) {
       this.updateItem(ring);
     },
-    "set.monster"(monster) {
+    "set.monsterName"(monster) {
       this.getMonster(monster);
     },
   },
@@ -189,7 +216,7 @@ export default {
     <input type="text" v-model="set.name" />
     <div>
       Monster:
-      <input type="text" v-model="set.monster" list="monster" />
+      <input type="text" v-model="set.monsterName" list="monster" />
       <datalist id="monster">
         <option
           v-for="monster in rsMonsters()"
@@ -199,7 +226,7 @@ export default {
           :id="monster[1].name"
         ></option>
       </datalist>
-      <!-- <img v-if="set.body.id" class="image1 background" :src="retrieveImage(set.body)" /> -->
+      <img v-if="set.monster.id" class="image1 background" :src="retrieveMonsterImage(set.monster)" />
     </div>
     <div>
       <input type="text" v-model="set.slotted_items.head" list="head" />
@@ -255,7 +282,12 @@ export default {
         ></option>
       </datalist>
       <img class="image1 background" src="/images/cape_slot.png" />
-      <img v-if="set.cape.id" class="image1 background" :src="retrieveImage(set.cape)" />
+      <img
+        v-if="set.cape.id"
+        class="image1 background"
+        :src="retrieveImage(set.cape)"
+        :alt="retrieveAltImage(set.cape)"
+      />
     </div>
     <div>
       <input type="text" v-model="set.slotted_items.ammo" list="ammo" />
