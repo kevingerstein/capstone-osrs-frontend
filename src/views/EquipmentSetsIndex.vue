@@ -11,6 +11,7 @@ export default {
   data: function () {
     return {
       sets: [],
+      monsterFilter: "",
     };
   },
   created: function () {
@@ -24,11 +25,33 @@ export default {
       });
     });
   },
+  computed: {
+    filteredByMonster() {
+      let sets = this.sets.filter((set) => {
+        return set.monster.name.toLowerCase().includes(this.monsterFilter.toLowerCase());
+      });
+      return sets;
+    },
+    uniqueMonstersList() {
+      let sets = this.sets.filter((set) => {
+        return set.monster.name.toLowerCase().includes(this.monsterFilter.toLowerCase());
+      });
+      let set = [...new Set(sets.map((set) => set.monster.name))];
+      console.log(set);
+      return set;
+    },
+  },
 };
 </script>
 
 <template>
-  <div v-for="set in sets" :key="set.id">
+  <input type="text" v-model="monsterFilter" list="monsters" />
+  <datalist id="monsters">
+    <option v-for="monster in uniqueMonstersList" v-bind:key="monster.id">
+      {{ monster }}
+    </option>
+  </datalist>
+  <div v-for="set in filteredByMonster" :key="set.id">
     <h2>{{ set.name }}</h2>
     <router-link :to="`/monsters/${set.monster.id}`">
       <h3>{{ set.monster.name }}</h3>

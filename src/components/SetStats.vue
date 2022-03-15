@@ -27,13 +27,18 @@ export default {
         magic_damage: 0,
         prayer: 0,
       };
+      console.log(this.set.slotted_items);
       for (const item in this.set.slotted_items) {
         if (this.set[item] && Object.prototype.hasOwnProperty.call(this.set[item], "equipment")) {
           for (const stat in this.stats) {
             this.stats[stat] += this.set[item].equipment[stat];
           }
         } else if (item === "weapon") {
-          if (this.set["2h"] && Object.prototype.hasOwnProperty.call(this.set["2h"], "equipment")) {
+          if (
+            this.set["2h"] &&
+            Object.prototype.hasOwnProperty.call(this.set["2h"], "equipment") &&
+            !this.set.slotted_items["2h"]
+          ) {
             for (const stat in this.stats) {
               this.stats[stat] += this.set["2h"].equipment[stat];
             }
