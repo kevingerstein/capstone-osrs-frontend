@@ -38,8 +38,8 @@ export default {
       <ItemImage :item="set.cape" itemSlot="cape" />
       <ItemImage :item="set.neck" itemSlot="neck" />
       <ItemImage :item="set.ammo" itemSlot="ammo" />
-      <ItemImage v-if="set.weapon" :item="set.weapon" itemSlot="weapon" />
       <ItemImage v-if="set['2h']" :item="set['2h']" itemSlot="2h" />
+      <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
       <ItemImage :item="set.body" itemSlot="body" />
       <ItemImage :item="set.shield" itemSlot="shield" />
       <ItemImage :item="set.legs" itemSlot="legs" />

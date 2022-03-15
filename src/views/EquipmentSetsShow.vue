@@ -28,6 +28,14 @@ export default {
       });
     });
   },
+  methods: {
+    destroySet: function () {
+      axios.delete(`/equipment-sets/${this.$route.params.id}`).then((response) => {
+        console.log(response.data);
+        this.$router.push("/equipment-sets/");
+      });
+    },
+  },
 };
 </script>
 
@@ -40,8 +48,8 @@ export default {
   <ItemImage :item="set.cape" itemSlot="cape" />
   <ItemImage :item="set.neck" itemSlot="neck" />
   <ItemImage :item="set.ammo" itemSlot="ammo" />
-  <ItemImage v-if="set.weapon" :item="set.weapon" itemSlot="weapon" />
   <ItemImage v-if="set['2h']" :item="set['2h']" itemSlot="2h" />
+  <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
   <ItemImage :item="set.body" itemSlot="body" />
   <ItemImage :item="set.shield" itemSlot="shield" />
   <ItemImage :item="set.legs" itemSlot="legs" />
@@ -49,5 +57,9 @@ export default {
   <ItemImage :item="set.feet" itemSlot="feet" />
   <ItemImage :item="set.ring" itemSlot="ring" />
   <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" />
+  <router-link :to="`/equipment-sets/${set.id}/edit`">Edit Set</router-link>
+  <br />
   <router-link to="/equipment-sets/">Back to Index</router-link>
+  <br />
+  <button v-on:click="destroySet()">Delete</button>
 </template>
