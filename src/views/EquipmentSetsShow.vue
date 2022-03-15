@@ -22,7 +22,9 @@ export default {
       this.set.monster = Monsters.get(this.set.oldschooljs_monster_id);
       this.set.equipment_set_items.forEach((item) => {
         this.set[item.slot] = Items.get(item.oldschooljs_item_id);
-        this.set.slotted_items[item.slot] = this.set[item.slot].name;
+        if (this.set[item.slot]) {
+          this.set.slotted_items[item.slot] = this.set[item.slot].name;
+        }
       });
     });
   },
@@ -31,7 +33,9 @@ export default {
 
 <template>
   <h2>{{ set.name }}</h2>
-  <h4 v-if="set.monster">{{ set.monster.name }}</h4>
+  <router-link v-if="set.monster" :to="`/monsters/${set.monster.id}`">
+    <h4>{{ set.monster.name }}</h4>
+  </router-link>
   <ItemImage :item="set.head" itemSlot="head" />
   <ItemImage :item="set.cape" itemSlot="cape" />
   <ItemImage :item="set.neck" itemSlot="neck" />
@@ -45,4 +49,5 @@ export default {
   <ItemImage :item="set.feet" itemSlot="feet" />
   <ItemImage :item="set.ring" itemSlot="ring" />
   <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" />
+  <router-link to="/equipment-sets/">Back to Index</router-link>
 </template>

@@ -5,7 +5,8 @@ import UsersLogin from "../views/UsersLogin.vue";
 import UsersLogout from "../views/UsersLogout.vue";
 import EquipmentSetsIndex from "../views/EquipmentSetsIndex.vue";
 import EquipmentSetsShow from "../views/EquipmentSetsShow.vue";
-import EquipmentSetsCreate from "../views/EquipmentSetsCreate.vue";
+import EquipmentSetsNew from "../views/EquipmentSetsNew.vue";
+import MonstersShow from "../views/MonstersShow.vue";
 
 const routes = [
   {
@@ -46,7 +47,12 @@ const routes = [
   {
     path: "/equipment-sets/new",
     name: "equipment-sets/new",
-    component: EquipmentSetsCreate,
+    component: EquipmentSetsNew,
+  },
+  {
+    path: "/monsters/:id",
+    name: "monsters-show",
+    component: MonstersShow,
   },
 ];
 

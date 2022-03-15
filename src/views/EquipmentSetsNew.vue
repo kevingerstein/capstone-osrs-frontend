@@ -68,29 +68,37 @@ export default {
     retrieveMonsterImage: function (monster) {
       let image_url = monster.data.wikiURL.replace(" ", "_");
       image_url = image_url.replace("/w/", "/images/");
+      console.log(image_url);
       if (image_url.includes("#")) {
         image_url = image_url.substring(0, image_url.indexOf("#"));
+        // image_url = image_url.replace("#", "_(");
+        // image_url = image_url + ").png";
       }
       image_url = image_url + ".png";
+
+      // console.log(image_url);
       return image_url;
     },
     updateItem: function (name) {
-      console.log("update: " + name);
       var element = document.getElementById(name);
       if (element) {
-        console.log(element.getAttribute("data"));
+        console.log("update: " + name);
+        console.log("item id: " + element.getAttribute("data"));
         let itemId = parseInt(element.getAttribute("data"));
         let item = Items.get(itemId);
         if (item && Object.prototype.hasOwnProperty.call(item, "equipment")) {
-          if (item.equipment.slot === "2h") {
-            this.set.weapon = {};
-            this.set.shield = {};
-            this.set.slotted_items.shield = "";
-          } else if (item.equipment.slot === "weapon") {
-            this.set["2h"] = {};
-          }
+          this.handleWeapon(item);
           this.set[item.equipment.slot] = item;
         }
+      }
+    },
+    handleWeapon: function (item) {
+      if (item.equipment.slot === "2h") {
+        this.set.weapon = {};
+        this.set.shield = {};
+        this.set.slotted_items.shield = "";
+      } else if (item.equipment.slot === "weapon") {
+        this.set["2h"] = {};
       }
     },
     getMonster: function (monster) {
@@ -161,7 +169,7 @@ export default {
           :id="monster[1].name"
         ></option>
       </datalist>
-      <img v-if="set.monster.id" class="image1 background" :src="retrieveMonsterImage(set.monster)" />
+      <img v-if="set.monster.id" :src="retrieveMonsterImage(set.monster)" />
     </div>
     <div>
       <input type="text" v-model="set.slotted_items.head" list="head" />
@@ -230,3 +238,10 @@ export default {
     <button type="submit" class="btn btn-lg bg-outline-dark">Create Set</button>
   </form>
 </template>
+
+<style>
+img {
+  width: 150px;
+  height: auto;
+}
+</style>

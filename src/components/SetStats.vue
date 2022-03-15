@@ -45,7 +45,6 @@ export default {
   watch: {
     set: {
       handler() {
-        console.log("test");
         this.baseStats();
       },
       deep: true,
