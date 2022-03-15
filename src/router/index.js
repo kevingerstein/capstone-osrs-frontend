@@ -3,6 +3,8 @@ import Home from "../views/Home.vue";
 import UsersNew from "../views/UsersNew.vue";
 import UsersLogin from "../views/UsersLogin.vue";
 import UsersLogout from "../views/UsersLogout.vue";
+import UsersShow from "../views/UsersShow.vue";
+import UsersEdit from "../views/UsersEdit.vue";
 import EquipmentSetsIndex from "../views/EquipmentSetsIndex.vue";
 import EquipmentSetsShow from "../views/EquipmentSetsShow.vue";
 import EquipmentSetsNew from "../views/EquipmentSetsNew.vue";
@@ -34,6 +36,16 @@ const routes = [
     path: "/users/logout",
     name: "logout",
     component: UsersLogout,
+  },
+  {
+    path: "/users/me",
+    name: "users-show",
+    component: UsersShow,
+  },
+  {
+    path: "/users/me/edit",
+    name: "users-edit",
+    component: UsersEdit,
   },
   {
     path: "/equipment-sets",
