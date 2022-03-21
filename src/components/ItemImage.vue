@@ -22,16 +22,12 @@ export default {
 </script>
 
 <template>
-  <span>
-    <img
-      class="image1 background"
-      :src="`/images/${itemSlot}_slot.png`"
-      v-if="!item || Object.keys(item).length == 0"
-    />
-    <span class="parent" v-else>
-      <img class="image1" src="/images/empty_slot.png" />
+  <span class="column">
+    <img class="background" :src="`/images/${itemSlot}_slot.png`" v-if="!item || Object.keys(item).length == 0" />
+    <div class="background" style="background-image: url('/images/empty_slot.png')" v-else>
+      <!-- <img class="image1" src="/images/empty_slot.png" /> -->
       <img class="image2" :src="retrieveImage(item)" alt="nope" id="itemImage" />
-    </span>
+    </div>
   </span>
 </template>
 
@@ -52,13 +48,35 @@ export default {
 
 .image2 {
   position: relative;
-  top: -7.5px;
-  left: -55px;
+  top: 0;
+  left: 0;
   height: 45px;
   width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 7.5px;
+  display: block;
 }
 .background {
   width: 60px;
   height: 60px;
+  background-size: 60px 60px;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  display: inline-block;
+}
+
+span {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+}
+
+.column {
+  width: 60px;
+  padding: 0;
 }
 </style>

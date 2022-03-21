@@ -32,16 +32,49 @@ export default {
       this.monster = Monsters.get(this.sets[0].oldschooljs_monster_id);
     });
   },
+  methods: {
+    retrieveMonsterImage: function (monster) {
+      let image_url = monster.data.wikiURL.replace(" ", "_");
+      image_url = image_url.replace("/w/", "/images/");
+      console.log(image_url);
+      if (image_url.includes("#")) {
+        image_url = image_url.substring(0, image_url.indexOf("#"));
+        // image_url = image_url.replace("#", "_(");
+        // image_url = image_url + ").png";
+      }
+      image_url = image_url + ".png";
+
+      // console.log(image_url);
+      return image_url;
+    },
+  },
 };
 </script>
 
 <template>
   <h1>{{ monster.name }}</h1>
+  <img class="monster-img" v-if="monster.id" :src="retrieveMonsterImage(monster)" />
+  <h4>General Information</h4>
+  <p>Combat Level: {{ monster.data.combatLevel }}</p>
+  <p>Hitpoints: {{ monster.data.hitpoints }}</p>
+  <p>Max Hit{{ monster.data.maxHit }}</p>
+  <h4>Attack Bonus</h4>
+  <p>Stab: {{ monster.data.attackStab }}</p>
+  <p>Slash: {{ monster.data.attackSlash }}</p>
+  <p>Crush: {{ monster.data.attackCrush }}</p>
+  <p>Magic: {{ monster.data.attackMagic }}</p>
+  <p>Ranged: {{ monster.data.attackRanged }}</p>
+  <h4>Defense Bonus</h4>
+  <p>Stab: {{ monster.data.defenceStab }}</p>
+  <p>Slash: {{ monster.data.defenceSlash }}</p>
+  <p>Crush: {{ monster.data.defenceCrush }}</p>
+  <p>Magic: {{ monster.data.defenceMagic }}</p>
+  <p>Ranged: {{ monster.data.defenceRanged }}</p>
   <div v-for="set in sets" :key="set.id">
-    <h2>{{ set.name }}</h2>
+    <!-- <h2>{{ set.name }}</h2> -->
 
     <router-link v-bind:to="`/equipment-sets/${set.id}`">
-      <ItemImage :item="set.head" itemSlot="head" />
+      <!-- <ItemImage :item="set.head" itemSlot="head" />
       <ItemImage :item="set.cape" itemSlot="cape" />
       <ItemImage :item="set.neck" itemSlot="neck" />
       <ItemImage :item="set.ammo" itemSlot="ammo" />
@@ -52,9 +85,47 @@ export default {
       <ItemImage :item="set.legs" itemSlot="legs" />
       <ItemImage :item="set.hands" itemSlot="hands" />
       <ItemImage :item="set.feet" itemSlot="feet" />
-      <ItemImage :item="set.ring" itemSlot="ring" />
+      <ItemImage :item="set.ring" itemSlot="ring" /> -->
+
+      <div class="parent set">
+        <h4 class="armor-text">{{ set.name }}</h4>
+        <h5 class="armor-text" v-if="set.monster">{{ set.monster.name }}</h5>
+        <div class="row justify-content-center">
+          <ItemImage :item="set.head" itemSlot="head" />
+        </div>
+        <div class="row justify-content-center">
+          <ItemImage :item="set.cape" itemSlot="cape" />
+          <ItemImage :item="set.neck" itemSlot="neck" />
+          <ItemImage :item="set.ammo" itemSlot="ammo" />
+        </div>
+        <div class="row justify-content-center">
+          <ItemImage v-if="set['2h'] && set['2h'].id" :item="set['2h']" itemSlot="2h" />
+          <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
+          <ItemImage :item="set.body" itemSlot="body" />
+          <ItemImage :item="set.shield" itemSlot="shield" />
+        </div>
+        <div class="row justify-content-center">
+          <ItemImage :item="set.legs" itemSlot="legs" />
+        </div>
+        <div class="row justify-content-center">
+          <ItemImage :item="set.hands" itemSlot="hands" />
+          <ItemImage :item="set.feet" itemSlot="feet" />
+          <ItemImage :item="set.ring" itemSlot="ring" />
+        </div>
+      </div>
     </router-link>
-    <SetStats :set="set" v-if="Object.keys(set).length !== 0" />
+    <SetStats :set="set" v-if="Object.keys(set).length !== 0" class="small" />
   </div>
   <router-link to="/equipment-sets/">Back to Index</router-link>
 </template>
+
+<style>
+.small {
+  width: 75%;
+}
+
+.monster-img {
+  height: 300px;
+  width: auto;
+}
+</style>

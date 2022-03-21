@@ -10,6 +10,7 @@ import EquipmentSetsShow from "../views/EquipmentSetsShow.vue";
 import EquipmentSetsNew from "../views/EquipmentSetsNew.vue";
 import MonstersShow from "../views/MonstersShow.vue";
 import EquipmentSetsEdit from "../views/EquipmentSetsEdit.vue";
+import EquipmentSetsCompare from "../views/EquipmentSetsCompare.vue";
 
 const routes = [
   {
@@ -66,6 +67,11 @@ const routes = [
     path: "/equipment-sets/new",
     name: "equipment-sets/new",
     component: EquipmentSetsNew,
+  },
+  {
+    path: "/equipment-sets/compare",
+    name: "equipment-sets/compare",
+    component: EquipmentSetsCompare,
   },
   {
     path: "/monsters/:id",

@@ -45,6 +45,7 @@ export default {
           }
         }
       }
+      this.$emit("stats", this.set.stats);
     },
   },
   watch: {
@@ -59,7 +60,57 @@ export default {
 </script>
 
 <template>
-  <div>
-    {{ stats }}
+  <!-- {{ stats }} -->
+  <div class="row">
+    <div class="stat-attack">
+      <h4>Attack Bonus</h4>
+      <p class="stat">Stab: {{ stats.attack_stab }}</p>
+      <p class="stat">Slash: {{ stats.attack_slash }}</p>
+      <p class="stat">Crush: {{ stats.attack_crush }}</p>
+      <p class="stat">Magic: {{ stats.attack_magic }}</p>
+      <p class="stat">Range: {{ stats.attack_range }}</p>
+    </div>
+    <div class="stat-attack">
+      <h4>Defense Bonus</h4>
+      <p class="stat">Stab: {{ stats.defence_stab }}</p>
+      <p class="stat">Slash: {{ stats.defence_slash }}</p>
+      <p class="stat">Crush: {{ stats.defence_crush }}</p>
+      <p class="stat">Magic: {{ stats.defence_magic }}</p>
+      <p class="stat">Range: {{ stats.defence_range }}</p>
+    </div>
+    <div class="stat-attack">
+      <h4>Other Bonuses</h4>
+      <p class="stat">Melee Strength: {{ stats.melee_strength }}</p>
+      <p class="stat">Ranged Strength: {{ stats.ranged_strength }}</p>
+      <p class="stat">Magic Damage: {{ stats.magic_damage }}</p>
+      <p class="stat">Prayer: {{ stats.prayer }}</p>
+    </div>
   </div>
 </template>
+
+<style>
+.stats {
+  display: inline-block;
+}
+.stat-attack {
+  float: left;
+  text-align: left;
+  width: 33%;
+}
+.stat {
+  margin: 5px;
+  margin-right: 0;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>

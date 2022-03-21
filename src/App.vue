@@ -14,7 +14,40 @@ export default {
 </script>
 
 <template>
-  <div id="nav">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" v-if="isLoggedIn" to="/equipment-sets">All Equipment Sets</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" v-if="isLoggedIn" to="/equipment-sets/new">Create Equipment Set</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link>
     |
     <router-link to="/about">About</router-link>
@@ -30,11 +63,13 @@ export default {
     <router-link v-if="isLoggedIn" to="/equipment-sets">Equipment Sets</router-link>
     |
     <router-link v-if="isLoggedIn" to="/equipment-sets/new">Create Equipment Set</router-link>
-  </div>
+    |
+    <router-link v-if="isLoggedIn" to="/equipment-sets/compare">Compare Equipment Sets</router-link>
+  </div> -->
   <router-view />
 </template>
 
-<style>
+<!-- <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -54,5 +89,11 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+</style> -->
+<style>
+#app {
+  width: 100%;
 }
 </style>

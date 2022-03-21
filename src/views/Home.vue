@@ -15,5 +15,3 @@ export default {
     <h1>{{ message }}</h1>
   </div>
 </template>
-
-<style></style>

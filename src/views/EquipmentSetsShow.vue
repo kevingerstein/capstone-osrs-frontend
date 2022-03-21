@@ -40,7 +40,38 @@ export default {
 </script>
 
 <template>
-  <h2>{{ set.name }}</h2>
+  <div class="center">
+    <div class="parent set">
+      <h2>{{ set.name }}</h2>
+      <router-link v-if="set.monster" :to="`/monsters/${set.monster.id}`">
+        <h3>{{ set.monster.name }}</h3>
+      </router-link>
+      <div class="row justify-content-center">
+        <ItemImage :item="set.head" itemSlot="head" />
+      </div>
+      <div class="row justify-content-center">
+        <ItemImage :item="set.cape" itemSlot="cape" />
+        <ItemImage :item="set.neck" itemSlot="neck" />
+        <ItemImage :item="set.ammo" itemSlot="ammo" />
+      </div>
+      <div class="row justify-content-center">
+        <ItemImage v-if="set['2h']" :item="set['2h']" itemSlot="2h" />
+        <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
+        <ItemImage :item="set.body" itemSlot="body" />
+        <ItemImage :item="set.shield" itemSlot="shield" />
+      </div>
+      <div class="row justify-content-center">
+        <ItemImage :item="set.legs" itemSlot="legs" />
+      </div>
+      <div class="row justify-content-center">
+        <ItemImage :item="set.hands" itemSlot="hands" />
+        <ItemImage :item="set.feet" itemSlot="feet" />
+        <ItemImage :item="set.ring" itemSlot="ring" />
+      </div>
+    </div>
+  </div>
+  <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" />
+  <!-- <h2>{{ set.name }}</h2>
   <router-link v-if="set.monster" :to="`/monsters/${set.monster.id}`">
     <h4>{{ set.monster.name }}</h4>
   </router-link>
@@ -57,9 +88,57 @@ export default {
   <ItemImage :item="set.feet" itemSlot="feet" />
   <ItemImage :item="set.ring" itemSlot="ring" />
   <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" />
+  -->
   <router-link :to="`/equipment-sets/${set.id}/edit`">Edit Set</router-link>
   <br />
   <router-link to="/equipment-sets/">Back to Index</router-link>
   <br />
   <button v-on:click="destroySet()">Delete</button>
 </template>
+
+<style>
+.column {
+  float: mid;
+  width: 60px;
+  column-fill: balance;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.set {
+  width: 300px;
+  height: 420px;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+  align-items: center;
+  vertical-align: middle;
+  text-align: center;
+
+  justify-content: center;
+  background-image: url("/images/Inventory_tab.png");
+  background-size: 300px 420px;
+}
+.parent {
+  text-align: center;
+}
+h2 {
+  color: whitesmoke;
+}
+
+.center {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  float: center;
+}
+/* 
+.card {
+  width: 320px;
+  min-width: 320px;
+} */
+</style>
