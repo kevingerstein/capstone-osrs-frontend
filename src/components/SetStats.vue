@@ -61,7 +61,7 @@ export default {
 
 <template>
   <!-- {{ stats }} -->
-  <div class="row">
+  <!-- <div class="row">
     <div class="stat-attack">
       <h4>Attack Bonus</h4>
       <p class="stat">Stab: {{ stats.attack_stab }}</p>
@@ -85,6 +85,25 @@ export default {
       <p class="stat">Magic Damage: {{ stats.magic_damage }}</p>
       <p class="stat">Prayer: {{ stats.prayer }}</p>
     </div>
+  </div> -->
+  <div class="set-column">
+    <h5 class="stat-header">Other Bonuses</h5>
+    <p class="stat">Melee Strength: {{ stats.melee_strength }}</p>
+    <p class="stat">Ranged Strength: {{ stats.ranged_strength }}</p>
+    <p class="stat">Magic Damage: {{ stats.magic_damage }}</p>
+    <p class="stat">Prayer: {{ stats.prayer }}</p>
+    <h5 class="stat-header">Attack Bonus</h5>
+    <p class="stat">Stab: {{ stats.attack_stab }}</p>
+    <p class="stat">Slash: {{ stats.attack_slash }}</p>
+    <p class="stat">Crush: {{ stats.attack_crush }}</p>
+    <p class="stat">Magic: {{ stats.attack_magic }}</p>
+    <p class="stat">Range: {{ stats.attack_ranged }}</p>
+    <h5 class="stat-header">Defense Bonus</h5>
+    <p class="stat">Stab: {{ stats.defence_stab }}</p>
+    <p class="stat">Slash: {{ stats.defence_slash }}</p>
+    <p class="stat">Crush: {{ stats.defence_crush }}</p>
+    <p class="stat">Magic: {{ stats.defence_magic }}</p>
+    <p class="stat">Range: {{ stats.defence_ranged }}</p>
   </div>
 </template>
 
@@ -93,13 +112,23 @@ export default {
   display: inline-block;
 }
 .stat-attack {
-  float: left;
-  text-align: left;
+  justify-content: center;
+  text-align: center;
   width: 33%;
 }
 .stat {
-  margin: 5px;
   margin-right: 0;
+  margin-bottom: 0px;
+  margin-left: 5px;
+  color: rgb(177, 177, 177);
+}
+
+.stat-header {
+  margin-top: 3px;
+  margin-bottom: 0;
+  color: rgb(177, 177, 177);
+  border-bottom: 1px solid yellow;
+  border-spacing: 15px;
 }
 
 .column {
@@ -109,6 +138,8 @@ export default {
 
 /* Clear floats after the columns */
 .row:after {
+  justify-content: center;
+  text-align: center;
   content: "";
   display: table;
   clear: both;

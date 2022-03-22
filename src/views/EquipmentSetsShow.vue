@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-  <div class="center">
+  <!-- <div class="center">
     <div class="parent set">
       <h2>{{ set.name }}</h2>
       <router-link v-if="set.monster" :to="`/monsters/${set.monster.id}`">
@@ -70,25 +70,40 @@ export default {
       </div>
     </div>
   </div>
-  <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" />
-  <!-- <h2>{{ set.name }}</h2>
-  <router-link v-if="set.monster" :to="`/monsters/${set.monster.id}`">
-    <h4>{{ set.monster.name }}</h4>
-  </router-link>
-  <ItemImage :item="set.head" itemSlot="head" />
-  <ItemImage :item="set.cape" itemSlot="cape" />
-  <ItemImage :item="set.neck" itemSlot="neck" />
-  <ItemImage :item="set.ammo" itemSlot="ammo" />
-  <ItemImage v-if="set['2h']" :item="set['2h']" itemSlot="2h" />
-  <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
-  <ItemImage :item="set.body" itemSlot="body" />
-  <ItemImage :item="set.shield" itemSlot="shield" />
-  <ItemImage :item="set.legs" itemSlot="legs" />
-  <ItemImage :item="set.hands" itemSlot="hands" />
-  <ItemImage :item="set.feet" itemSlot="feet" />
-  <ItemImage :item="set.ring" itemSlot="ring" />
-  <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" />
-  -->
+  <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" /> -->
+  <div class="center-sets center">
+    <router-link v-bind:to="`/equipment-sets/${set.id}`">
+      <div class="parent set">
+        <div class="set-column">
+          <h4 class="armor-text-center">{{ set.name }}</h4>
+          <h5 class="armor-text-center">{{ set.monster.name }}</h5>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.head" itemSlot="head" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.cape" itemSlot="cape" />
+            <ItemImage :item="set.neck" itemSlot="neck" />
+            <ItemImage :item="set.ammo" itemSlot="ammo" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage v-if="set['2h'] && set['2h'].id" :item="set['2h']" itemSlot="2h" />
+            <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
+            <ItemImage :item="set.body" itemSlot="body" />
+            <ItemImage :item="set.shield" itemSlot="shield" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.legs" itemSlot="legs" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.hands" itemSlot="hands" />
+            <ItemImage :item="set.feet" itemSlot="feet" />
+            <ItemImage :item="set.ring" itemSlot="ring" />
+          </div>
+        </div>
+        <SetStats :set="set" v-if="Object.keys(set).length !== 0" class="small" />
+      </div>
+    </router-link>
+  </div>
   <router-link :to="`/equipment-sets/${set.id}/edit`">Edit Set</router-link>
   <br />
   <router-link to="/equipment-sets/">Back to Index</router-link>
@@ -110,7 +125,7 @@ export default {
   display: table;
 }
 .set {
-  width: 300px;
+  width: 400px;
   height: 420px;
   padding: 10px;
   margin: 10px;
@@ -121,7 +136,7 @@ export default {
 
   justify-content: center;
   background-image: url("/images/Inventory_tab.png");
-  background-size: 300px 420px;
+  background-size: 400px 420px;
 }
 .parent {
   text-align: center;

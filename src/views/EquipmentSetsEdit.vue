@@ -159,88 +159,6 @@ export default {
 </script>
 
 <template>
-  <!-- <form v-on:submit.prevent="updateSet()">
-    Set Name:
-    <input type="text" v-model="set.name" />
-    <div>
-      Monster:
-      <input type="text" v-model="set.monsterName" list="monster" />
-      <datalist id="monster">
-        <option
-          v-for="monster in rsMonsters()"
-          :key="monster.id"
-          :data="monster[0]"
-          :value="monster[1].name"
-          :id="monster[1].name"
-        ></option>
-      </datalist>
-      <img v-if="set.monster.id" :src="retrieveMonsterImage(set.monster)" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.head" list="head" />
-      <ItemList :itemSlot="'head'" id="head" />
-      <ItemImage :item="set.head" itemSlot="head" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.body" list="body" />
-      <ItemList :itemSlot="'body'" id="body" />
-      <ItemImage :item="set.body" itemSlot="body" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.neck" list="neck" />
-      <ItemList :itemSlot="'neck'" id="neck" />
-      <ItemImage :item="set.neck" itemSlot="neck" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.cape" list="cape" />
-      <ItemList :itemSlot="'cape'" id="cape" />
-      <ItemImage :item="set.cape" itemSlot="cape" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.ammo" list="ammo" />
-      <ItemList :itemSlot="'ammo'" id="ammo" />
-      <ItemImage :item="set.ammo" itemSlot="ammo" />
-    </div>
-    <div>
-      <input
-        type="text"
-        v-model="set.slotted_items.shield"
-        list="shield"
-        :disabled="set['2h'] && Object.keys(set['2h']).length !== 0"
-      />
-      <ItemList :itemSlot="'shield'" id="shield" />
-      <ItemImage :item="set.shield" itemSlot="shield" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.legs" list="legs" />
-      <ItemList :itemSlot="'legs'" id="legs" />
-      <ItemImage :item="set.legs" itemSlot="legs" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.ring" list="ring" />
-      <ItemList :itemSlot="'ring'" id="ring" />
-      <ItemImage :item="set.ring" itemSlot="ring" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.hands" list="hands" />
-      <ItemList :itemSlot="'hands'" id="hands" />
-      <ItemImage :item="set.hands" itemSlot="hands" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.feet" list="feet" />
-      <ItemList :itemSlot="'feet'" id="feet" />
-      <ItemImage :item="set.feet" itemSlot="feet" />
-    </div>
-    <div>
-      <input type="text" v-model="set.slotted_items.weapon" list="weapon" />
-      <ItemList :itemSlot="'weapon'" id="weapon" />
-      <ItemImage v-if="set['2h'] && set['2h'].id" :item="set['2h']" itemSlot="2h" />
-      <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
-    </div>
-    <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" />
-
-    <button type="submit" class="btn btn-lg bg-outline-dark">Update Set</button>
-  </form> -->
   <form class="row g-3" v-on:submit.prevent="updateSet()">
     <div class="col-md-6">
       <label for="head" class="form-label">Set Name</label>
@@ -352,36 +270,39 @@ export default {
       <button type="submit" class="btn btn-primary">Update Set</button>
     </div>
   </form>
-  <div class="center">
-    <div class="parent set">
-      <h4 class="armor-text">{{ set.name }}</h4>
-      <h5 class="armor-text" v-if="set.monster">{{ set.monster.name }}</h5>
-      <div class="row justify-content-center">
-        <ItemImage :item="set.head" itemSlot="head" />
+  <div class="center-sets center">
+    <router-link v-bind:to="`/equipment-sets/${set.id}`">
+      <div class="parent set">
+        <div class="set-column">
+          <h4 class="armor-text-center">{{ set.name }}</h4>
+          <h5 class="armor-text-center">{{ set.monster.name }}</h5>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.head" itemSlot="head" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.cape" itemSlot="cape" />
+            <ItemImage :item="set.neck" itemSlot="neck" />
+            <ItemImage :item="set.ammo" itemSlot="ammo" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage v-if="set['2h'] && set['2h'].id" :item="set['2h']" itemSlot="2h" />
+            <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
+            <ItemImage :item="set.body" itemSlot="body" />
+            <ItemImage :item="set.shield" itemSlot="shield" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.legs" itemSlot="legs" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.hands" itemSlot="hands" />
+            <ItemImage :item="set.feet" itemSlot="feet" />
+            <ItemImage :item="set.ring" itemSlot="ring" />
+          </div>
+        </div>
+        <SetStats :set="set" v-if="Object.keys(set).length !== 0" class="small" />
       </div>
-      <div class="row justify-content-center">
-        <ItemImage :item="set.cape" itemSlot="cape" />
-        <ItemImage :item="set.neck" itemSlot="neck" />
-        <ItemImage :item="set.ammo" itemSlot="ammo" />
-      </div>
-      <div class="row justify-content-center">
-        <ItemImage v-if="set['2h'] && set['2h'].id" :item="set['2h']" itemSlot="2h" />
-        <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
-        <ItemImage :item="set.body" itemSlot="body" />
-        <ItemImage :item="set.shield" itemSlot="shield" />
-      </div>
-      <div class="row justify-content-center">
-        <ItemImage :item="set.legs" itemSlot="legs" />
-      </div>
-      <div class="row justify-content-center">
-        <ItemImage :item="set.hands" itemSlot="hands" />
-        <ItemImage :item="set.feet" itemSlot="feet" />
-        <ItemImage :item="set.ring" itemSlot="ring" />
-      </div>
-    </div>
+    </router-link>
   </div>
-  <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" />
-
   <router-link v-bind:to="`/equipment-sets/${set.id}`">Back</router-link>
 </template>
 

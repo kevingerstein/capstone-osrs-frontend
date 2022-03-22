@@ -350,7 +350,7 @@ export default {
 
     <button type="submit" class="btn btn-lg bg-outline-dark">Create Set</button>
   </form> -->
-  <div class="center">
+  <!-- <div class="center">
     <div class="parent set">
       <h4 class="armor-text">{{ set.name }}</h4>
       <h5 class="armor-text" v-if="set.monster">{{ set.monster.name }}</h5>
@@ -378,7 +378,41 @@ export default {
       </div>
     </div>
   </div>
-  <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" />
+
+  <SetStats :set="set" v-if="Object.keys(this.set).length !== 0" /> -->
+  <div class="center-sets center">
+    <router-link v-bind:to="`/equipment-sets/${set.id}`">
+      <div class="parent set">
+        <div class="set-column">
+          <h4 class="armor-text-center">{{ set.name }}</h4>
+          <h5 class="armor-text-center">{{ set.monster.name }}</h5>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.head" itemSlot="head" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.cape" itemSlot="cape" />
+            <ItemImage :item="set.neck" itemSlot="neck" />
+            <ItemImage :item="set.ammo" itemSlot="ammo" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage v-if="set['2h'] && set['2h'].id" :item="set['2h']" itemSlot="2h" />
+            <ItemImage v-else :item="set.weapon" itemSlot="weapon" />
+            <ItemImage :item="set.body" itemSlot="body" />
+            <ItemImage :item="set.shield" itemSlot="shield" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.legs" itemSlot="legs" />
+          </div>
+          <div class="row justify-content-center">
+            <ItemImage :item="set.hands" itemSlot="hands" />
+            <ItemImage :item="set.feet" itemSlot="feet" />
+            <ItemImage :item="set.ring" itemSlot="ring" />
+          </div>
+        </div>
+        <SetStats :set="set" v-if="Object.keys(set).length !== 0" class="small" />
+      </div>
+    </router-link>
+  </div>
 </template>
 
 <style>
@@ -395,5 +429,12 @@ img {
 
 .armor-text {
   color: white;
+}
+datalist {
+  display: none;
+}
+/* specifically hide the arrow on focus */
+input::-webkit-calendar-picker-indicator {
+  display: none;
 }
 </style>

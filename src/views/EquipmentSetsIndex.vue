@@ -123,7 +123,7 @@ export default {
     </div>
   </div> -->
   <div class="parent">
-    <div v-for="set in filteredByMonster" :key="set.id" class="set">
+    <div v-for="set in filteredByMonster" :key="set.id" class="set-index">
       <h2>{{ set.name }}</h2>
       <router-link :to="`/monsters/${set.monster.id}`">
         <h3>{{ set.monster.name }}</h3>
@@ -170,7 +170,7 @@ export default {
   clear: both;
   display: table;
 }
-.set {
+.set-index {
   width: 300px;
   height: 420px;
   padding: 10px;
