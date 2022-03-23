@@ -86,7 +86,7 @@ export default {
       <p class="stat">Prayer: {{ stats.prayer }}</p>
     </div>
   </div> -->
-  <div class="set-column">
+  <!-- <div class="set-column">
     <h5 class="stat-header">Other Bonuses</h5>
     <p class="stat">Melee Strength: {{ stats.melee_strength }}</p>
     <p class="stat">Ranged Strength: {{ stats.ranged_strength }}</p>
@@ -104,7 +104,38 @@ export default {
     <p class="stat">Crush: {{ stats.defence_crush }}</p>
     <p class="stat">Magic: {{ stats.defence_magic }}</p>
     <p class="stat">Range: {{ stats.defence_ranged }}</p>
+  </div> -->
+  <div class="col-lg-4">
+    <img src="/images/plus-solid.svg" alt="" class="icon mb-2" />
+    <h4>Other Bonuses</h4>
+    <p class="stat">Melee Strength: {{ stats.melee_strength }}</p>
+    <p class="stat">Ranged Strength: {{ stats.ranged_strength }}</p>
+    <p class="stat">Magic Damage: {{ stats.magic_damage }}</p>
+    <p class="stat">Prayer: {{ stats.prayer }}</p>
+    <br />
   </div>
+  <!-- /.col-lg-4 -->
+  <div class="col-lg-4">
+    <img src="/images/skull-solid.svg" alt="" class="icon mb-2" />
+    <h4>Attack Bonus</h4>
+    <p class="stat">Stab: {{ stats.attack_stab }}</p>
+    <p class="stat">Slash: {{ stats.attack_slash }}</p>
+    <p class="stat">Crush: {{ stats.attack_crush }}</p>
+    <p class="stat">Magic: {{ stats.attack_magic }}</p>
+    <p class="stat">Range: {{ stats.attack_ranged }}</p>
+  </div>
+  <!-- /.col-lg-4 -->
+  <div class="col-lg-4">
+    <img src="/images/shield-shaded.svg" alt="" class="icon mb-2" />
+
+    <h4>Defense Bonus</h4>
+    <p class="stat">Stab: {{ stats.defence_stab }}</p>
+    <p class="stat">Slash: {{ stats.defence_slash }}</p>
+    <p class="stat">Crush: {{ stats.defence_crush }}</p>
+    <p class="stat">Magic: {{ stats.defence_magic }}</p>
+    <p class="stat">Range: {{ stats.defence_ranged }}</p>
+  </div>
+  <!-- /.col-lg-4 -->
 </template>
 
 <style>

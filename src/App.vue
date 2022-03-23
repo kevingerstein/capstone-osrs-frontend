@@ -14,27 +14,24 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
       <button
         class="navbar-toggler"
         type="button"
-        data-mdb-toggle="collapse"
-        data-mdb-target="#navbarNav"
-        aria-controls="navbarNav"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <i class="fas fa-bars"></i>
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <router-link class="nav-link" v-if="!isLoggedIn" to="/users/login">Login</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" v-if="isLoggedIn" to="/equipment-sets">All Equipment Sets</router-link>
@@ -42,30 +39,13 @@ export default {
           <li class="nav-item">
             <router-link class="nav-link" v-if="isLoggedIn" to="/equipment-sets/new">Create Equipment Set</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" v-if="isLoggedIn" to="/users/logout">Logout</router-link>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-
-  <!-- <div id="nav">
-    <router-link to="/">Home</router-link>
-    |
-    <router-link to="/about">About</router-link>
-    |
-    <router-link v-if="!isLoggedIn" to="/users/new">Signup</router-link>
-    |
-    <router-link v-if="!isLoggedIn" to="/users/login">Login</router-link>
-    |
-    <router-link v-if="isLoggedIn" to="/users/logout">Logout</router-link>
-    |
-    <router-link v-if="isLoggedIn" to="/users/me">Profile</router-link>
-    |
-    <router-link v-if="isLoggedIn" to="/equipment-sets">Equipment Sets</router-link>
-    |
-    <router-link v-if="isLoggedIn" to="/equipment-sets/new">Create Equipment Set</router-link>
-    |
-    <router-link v-if="isLoggedIn" to="/equipment-sets/compare">Compare Equipment Sets</router-link>
-  </div> -->
   <router-view />
 </template>
 

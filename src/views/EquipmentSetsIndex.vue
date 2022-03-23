@@ -171,7 +171,7 @@ export default {
   display: table;
 }
 .set-index {
-  width: 300px;
+  width: 260px;
   height: 420px;
   padding: 10px;
   margin: 10px;
@@ -179,17 +179,16 @@ export default {
   align-items: center;
   vertical-align: middle;
   text-align: center;
-
   justify-content: center;
   background-image: url("/images/Inventory_tab.png");
-  background-size: 300px 420px;
+  background-size: 260px 420px;
 }
 .parent {
   text-align: center;
 }
-h2 {
+/* h2 {
   color: whitesmoke;
-}
+} */
 /* 
 .card {
   width: 320px;

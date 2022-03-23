@@ -125,25 +125,24 @@ export default {
   display: table;
 }
 .set {
-  width: 400px;
-  height: 420px;
+  width: 290px;
+  height: 370px;
   padding: 10px;
   margin: 10px;
   position: relative;
   align-items: center;
   vertical-align: middle;
   text-align: center;
-
   justify-content: center;
   background-image: url("/images/Inventory_tab.png");
-  background-size: 400px 420px;
+  background-size: 290px 370px;
 }
 .parent {
   text-align: center;
 }
-h2 {
+/* h2 {
   color: whitesmoke;
-}
+} */
 
 .center {
   justify-content: center;
@@ -151,7 +150,7 @@ h2 {
   align-items: center;
   float: center;
 }
-/* 
+/*
 .card {
   width: 320px;
   min-width: 320px;
