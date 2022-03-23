@@ -119,11 +119,11 @@ export default {
 }
 
 /* Clear floats after image containers */
-.row::after {
+/* .row::after {
   content: "";
   clear: both;
   display: table;
-}
+} */
 .set {
   width: 290px;
   height: 370px;

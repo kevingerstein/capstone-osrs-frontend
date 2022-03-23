@@ -293,7 +293,7 @@ export default {
         <hr class="mb-5 mt-5" />
         <h2 class="jumbotron-heading">Equipment Stats</h2>
         <hr class="featurette-divider col-md-5 center mb-4" />
-        <SetStats :set="set" v-if="Object.keys(set).length !== 0" class="small" />
+        <SetStats :set="set" v-if="Object.keys(set).length !== 0" />
       </div>
     </div>
   </div>
