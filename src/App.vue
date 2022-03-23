@@ -34,6 +34,9 @@ export default {
             <router-link class="nav-link" v-if="!isLoggedIn" to="/users/login">Login</router-link>
           </li>
           <li class="nav-item">
+            <router-link class="nav-link" v-if="!isLoggedIn" to="/users/new">Signup</router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link" v-if="isLoggedIn" to="/equipment-sets">All Equipment Sets</router-link>
           </li>
           <li class="nav-item">
