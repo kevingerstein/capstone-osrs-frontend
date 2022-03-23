@@ -34,9 +34,7 @@ export default {
     <form class="form-signin center" v-on:submit.prevent="submit()">
       <img class="mb-4" src="/images/dragon-solid.svg" alt="" width="72" height="72" />
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
+      <hr class="featurette-divider" />
       <label for="inputEmail" class="sr-only">Email address</label>
       <input
         type="email"
@@ -56,6 +54,7 @@ export default {
         required
         v-model="newSessionParams.password"
       />
+      <p class="text-danger" v-for="error in errors" :key="error.id">{{ error }}</p>
       <input type="submit" class="btn btn-secondary btn-lg btn-block" style="width: 100%" value="Login" />
     </form>
   </div>
