@@ -3,9 +3,21 @@ export default {
   data: function () {
     return {
       message: "Welcome to Vue.js!",
+      isLoggedIn: !!localStorage.jwt,
     };
   },
-  created: function () {},
+  created: function () {
+    if (this.isLoggedIn) {
+      this.$router.push("/equipment-sets");
+    } else {
+      this.$router.push("/users/login");
+    }
+  },
+  watch: {
+    $route: function () {
+      this.isLoggedIn = !!localStorage.jwt;
+    },
+  },
   methods: {},
 };
 </script>
