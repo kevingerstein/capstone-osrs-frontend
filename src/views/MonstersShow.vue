@@ -215,6 +215,10 @@ export default {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
+  .monster-img {
+    height: 150px;
+    width: auto;
+  }
 }
 .jumbotron {
   padding-top: 3rem;

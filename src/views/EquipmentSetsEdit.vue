@@ -209,7 +209,6 @@ export default {
             <ItemImage :item="set.feet" itemSlot="feet" />
             <ItemImage :item="set.ring" itemSlot="ring" />
           </div>
-          <!-- <SetStats :set="set" v-if="Object.keys(set).length !== 0" class="small" /> -->
         </div>
       </div>
       <div class="col-md-8 order-md-1">
@@ -319,7 +318,7 @@ export default {
   <ItemList :itemSlot="'feet'" id="feet" />
   <ItemList :itemSlot="'weapon'" id="weapon" />
 
-  <router-link v-bind:to="`/equipment-sets/${set.id}`">Back</router-link>
+  <!-- <router-link v-bind:to="`/equipment-sets/${set.id}`">Back</router-link> -->
 </template>
 
 <style>

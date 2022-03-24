@@ -38,7 +38,7 @@ export default {
     <h1>Profile</h1>
     <p>Email: {{ user.email }}</p>
     <p>Display Name: {{ user.display_name }}</p>
-    <img v-if="user.profile_picture" :src="user.profile_picture" alt="none" />
+    <!-- <img v-if="user.profile_picture" :src="user.profile_picture" alt="none" /> -->
     <br />
     <router-link to="me/edit">Edit</router-link>
     <br />

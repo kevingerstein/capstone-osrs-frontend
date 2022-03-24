@@ -57,6 +57,9 @@ export default {
       console.log(monsterId);
       this.$router.push(`/monsters/${monsterId}`);
     },
+    goToEdit: function (id) {
+      this.$router.push(`/equipment-sets/${id}/edit`);
+    },
   },
 };
 </script>
@@ -163,9 +166,6 @@ export default {
 .parent {
   text-align: center;
 }
-/* h2 {
-  color: whitesmoke;
-} */
 
 .center {
   justify-content: center;
@@ -176,9 +176,4 @@ export default {
 .vert-center {
   vertical-align: center;
 }
-/*
-.card {
-  width: 320px;
-  min-width: 320px;
-} */
 </style>
