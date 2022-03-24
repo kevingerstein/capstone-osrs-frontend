@@ -191,8 +191,4 @@ export default {
   width: 320px;
   min-width: 320px;
 } */
-
-.marketing {
-  background-color: #fff;
-}
 </style>

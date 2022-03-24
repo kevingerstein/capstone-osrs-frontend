@@ -200,7 +200,7 @@ export default {
 }
 .armor-text-center {
   text-align: center;
-  color: rgb(172, 172, 172);
+  background-color: #f5f5f5;
 }
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -224,7 +224,7 @@ export default {
   padding-top: 3rem;
   padding-bottom: 3rem;
   margin-bottom: 0;
-  background-color: #fff;
+  background-color: #f5f5f5;
 }
 @media (min-width: 768px) {
   .jumbotron {

@@ -33,7 +33,7 @@ export default {
   <div class="container-fluid form-body">
     <form class="form-signin center" v-on:submit.prevent="submit()">
       <img class="mb-4" src="/images/dragon-solid.svg" alt="" width="72" height="72" />
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Please Log In</h1>
       <hr class="featurette-divider" />
       <label for="inputEmail" class="sr-only">Email address</label>
       <input
