@@ -130,6 +130,10 @@ export default {
     rsMonsters: function () {
       return Monsters;
     },
+    goToSet: function (setId) {
+      console.log(setId);
+      this.$router.push(`/equipment-sets/${setId}`);
+    },
   },
   watch: {
     "set.slotted_items.head"(head) {
@@ -178,7 +182,10 @@ export default {
       <div class="container">
         <h1 class="jumbotron-heading">Equipment Set Edit</h1>
 
-        <p class="lead text-muted">{{ set.name }}</p>
+        <p class="lead text-muted mt-4">{{ set.name }}</p>
+        <button class="btn btn-secondary btn-m btn-block mt-2 mb-3" v-on:click="goToSet(set.id)" style="width: 60%">
+          View Set
+        </button>
       </div>
     </div>
 
@@ -281,7 +288,7 @@ export default {
           </div>
 
           <div class="row"></div>
-          <button type="submit" class="btn btn-secondary btn-lg btn-block" style="width: 100%">Update</button>
+          <button type="submit" class="btn btn-secondary btn-lg btn-block mt-2" style="width: 100%">Update</button>
           <div class="col-md-12 order-md-2 mt-2">
             <p class="text-danger" v-for="error in errors" :key="error.id">{{ error }}</p>
           </div>
